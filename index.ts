@@ -73,17 +73,22 @@ init();
 //================ Functions ===================
 
 function drawCookies() {
-  cookiesDiv.innerHTML = '';
-  for (let cookie in cookies) {
-    let newCookieDiv: HTMLElement = document.createElement('div');
-    newCookieDiv.innerHTML = String(cookies[cookie].chocolateChipNum);
-    newCookieDiv.classList.add('cookie');
-    newCookieDiv.style.backgroundColor = cookies[cookie].colour;
-    cookiesDiv.appendChild(newCookieDiv);
-    
-  }
-}
+let cookiesDiv: HTMLElement = document.getElementById('cookiesDiv');
 
+  // remove old cookies
+  cookiesDiv.innerHTML = "";
+  
+  // create first cookie
+  for(let cookie of cookies) {
+    let newCookieDiv: HTMLElement = document.createElement('div');
+    newCookieDiv.className = 'cookie';
+    newCookieDiv.style.backgroundColor = cookie.colour;
+    newCookieDiv.innerHTML = cookie.chocolateChipNum.toString();
+
+    cookiesDiv.append(newCookieDiv);
+  }
+
+}
 function changeColour() {
   let selectedCookie: Cookie;
   selectedCookie = cookies[cookieSelector.selectedIndex];
