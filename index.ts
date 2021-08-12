@@ -6,6 +6,7 @@ import { Colors } from './models/CookieEnums';
 //============== Array of Cookies ========================================
 
 const cookies: Cookie[] = [];
+let colourArray: Array<string> = [];
 
 function init() {
   const cookie1: Cookie = new Cookie('Cookie1');
@@ -24,8 +25,6 @@ function init() {
     newOption.value = String(cookies.indexOf(cookies[cookie]));
     cookieSelector.add(newOption);
   }
-
-  let colourArray: Array<string> = [];
 
   for (let c in Colors) {
     if (isNaN(Number(c))) {
@@ -73,13 +72,13 @@ init();
 //================ Functions ===================
 
 function drawCookies() {
-let cookiesDiv: HTMLElement = document.getElementById('cookiesDiv');
+  let cookiesDiv: HTMLElement = document.getElementById('cookiesDiv');
 
   // remove old cookies
-  cookiesDiv.innerHTML = "";
-  
+  cookiesDiv.innerHTML = '';
+
   // create first cookie
-  for(let cookie of cookies) {
+  for (let cookie of cookies) {
     let newCookieDiv: HTMLElement = document.createElement('div');
     newCookieDiv.className = 'cookie';
     newCookieDiv.style.backgroundColor = cookie.colour;
@@ -87,13 +86,12 @@ let cookiesDiv: HTMLElement = document.getElementById('cookiesDiv');
 
     cookiesDiv.append(newCookieDiv);
   }
-
 }
 function changeColour() {
   let selectedCookie: Cookie;
   selectedCookie = cookies[cookieSelector.selectedIndex];
 
-  selectedCookie.colour = cookieColour.value;
+  selectedCookie.colour = colourArray[cookieColour.value];
   console.log(cookieColour.value);
 
   updateDisplay();
