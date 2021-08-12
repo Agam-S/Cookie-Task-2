@@ -87,7 +87,7 @@ function drawCookies() {
 }
 
 function changeColour() {
-  cookies[cookieSelector.value].colour = cookieColour.value;
+  cookies[cookieSelector.value].colour = cookieColour.innerHTML;
   updateDisplay();
 }
 
