@@ -78,16 +78,19 @@ function drawCookies() {
     let newCookieDiv: HTMLElement = document.createElement('div');
     newCookieDiv.innerHTML = String(cookies[cookie].chocolateChipNum);
     newCookieDiv.classList.add('cookie');
-    newCookieDiv.setAttribute(
-      'style',
-      `background-color: ${cookies[cookie].colour}`
-    );
+    newCookieDiv.style.backgroundColor = cookies[cookie].colour;
     cookiesDiv.appendChild(newCookieDiv);
+    
   }
 }
 
 function changeColour() {
-  cookies[cookieSelector.value].colour = cookieColour.innerHTML;
+  let selectedCookie: Cookie;
+  selectedCookie = cookies[cookieSelector.selectedIndex];
+
+  selectedCookie.colour = cookieColour.value;
+  console.log(cookieColour.value);
+
   updateDisplay();
 }
 
